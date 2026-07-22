@@ -115,6 +115,14 @@
     * https://docs.flutter.dev/platform-integration/web/initialization
   -->
   <script src="flutter_bootstrap.js" async=""></script>
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
+<script>
+function openRazorpay(options){
+    var rzp = new Razorpay(options);
+    rzp.open();
+}
+</script>
 
-</body></html>
+</body>
+</html>
