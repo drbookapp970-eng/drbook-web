@@ -57788,7 +57788,7 @@ case 6:n=a3
 m=J.am(n.a,"id")
 o.ay=A.a_(["orderId",m,"doctorId",o.d,"slotId",o.e,"amount",a,"bookingType",o.r,"reason",o.w,"clinicId",o.x,"patient_id",o.y,"patient_name",o.z,"patient_email",o.Q,"patient_mobile",o.as],i,g)
 h=a*100
-A.a_(["key","rzp_test_StfoOeazDziQIn","amount",h,"order_id",m,"name",a0,"description",c,"prefill",A.a_(["contact",b,"email",d],i,i),"theme",A.a_(["color","#2563EB"],i,i)],i,g)
+A.a_(["key","rzp_live_THEPLNYIRX7y8H","amount",h,"order_id",m,"name",a0,"description",c,"prefill",A.a_(["contact",b,"email",d],i,i),"theme",A.a_(["color","#2563EB"],i,i)],i,g)
 try{A.hh().$1("OPENING RAZORPAY...")
 A.bz_(h,c,"rzp_test_StfoOeazDziQIn",a0,new A.awO(o),m)}catch(a1){l=A.W(a1)
 A.hh().$1("RAZORPAY OPEN ERROR: "+A.h(l))}q=1
