@@ -1,147 +1,86 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-  <!--
-    If you are serving your web app in a path other than the root, change the
-    href value below to reflect the base path you are serving from.
-
-    For more details:
-    https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
-  -->
-
   <base href="/">
-
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
+  <meta name="description" content="Dr.Book - Book. Consult. Heal.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- iOS meta tags & icons -->
+  <!-- iOS meta tags -->
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="dr_book">
-
+  <meta name="apple-mobile-web-app-title" content="Dr.Book">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png">
-
-  <title>dr_book</title>
-
+  <title>Dr.Book - Book. Consult. Heal.</title>
   <link rel="manifest" href="manifest.json">
 
-  <meta
-    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-    name="viewport"
-  >
-
-  <!-- ===================================================== -->
-  <!-- EXISTING SPLASH SCREEN -->
-  <!-- ===================================================== -->
-
-  <style id="splash-screen-style">
-
-    html {
-      height: 100%;
+  <!-- Responsive splash screen -->
+  <style>
+    html, body { width: 100%; height: 100%; margin: 0; }
+    body { background: #fff; }
+    #splash {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
     }
-
-    body {
-      margin: 0;
-      min-height: 100%;
-      background-color: #ffffff;
-      background-image: url("splash/img/light-background.png");
-      background-size: 100% 100%;
-    }
-
-    .center {
-      margin: 0;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      -ms-transform: translate(-50%, -50%);
-      transform: translate(-50%, -50%);
-    }
-
-    .contain {
+    #splash img {
       display: block;
       width: 100%;
       height: 100%;
       object-fit: contain;
     }
-
-    .stretch {
-      display: block;
-      width: 100%;
-      height: 100%;
+    @media (max-width: 767px) {
+      #splash img { object-fit: cover; }
     }
-
-    .cover {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .bottom {
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      -ms-transform: translate(-50%, 0);
-      transform: translate(-50%, 0);
-    }
-
-    .bottomLeft {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-    }
-
-    .bottomRight {
-      position: absolute;
-      bottom: 0;
-      right: 0;
-    }
-
   </style>
 
-  <script id="splash-screen-script">
-
+  <script>
     function removeSplashFromWeb() {
       document.getElementById("splash")?.remove();
       document.getElementById("splash-branding")?.remove();
       document.body.style.background = "transparent";
     }
-
   </script>
 
-  <!-- ===================================================== -->
-  <!-- SYNCFUSION PDF VIEWER - PDF.JS -->
-  <!-- ===================================================== -->
-
+  <!-- PDF.js for Syncfusion PDF Viewer -->
   <script type="module">
-
     import * as pdfjsLib from
       'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.min.mjs';
-
     pdfjsLib.GlobalWorkerOptions.workerSrc =
       'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.worker.min.mjs';
-
     window.pdfjsLib = pdfjsLib;
-
   </script>
 
+  <!-- Razorpay -->
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <script>
+    window.openRazorpay = function(options) {
+      if (!window.Razorpay) {
+        console.error("Razorpay SDK not loaded");
+        return;
+      }
+      const checkout = new Razorpay(options);
+      checkout.open();
+    };
+  </script>
 </head>
-
 <body>
+  <div id="splash" aria-label="Dr.Book loading">
+    <picture>
+      <source media="(min-width: 768px)" srcset="splash/img/desktop_splash.png">
+      <img src="splash/img/mobile_splash.jpeg" alt="Dr.Book - Book. Consult. Heal.">
+    </picture>
+  </div>
 
-  <!-- ===================================================== -->
-  <!-- FLUTTER -->
-  <!-- ===================================================== -->
-
-  <script
-    src="flutter_bootstrap.js"
-    async>
-  </script>
-
+  <script src="flutter_bootstrap.js" async></script>
 </body>
 </html>
