@@ -45,10 +45,25 @@
 
   <script>
     function removeSplashFromWeb() {
-      document.getElementById("splash")?.remove();
+      const splash = document.getElementById("splash");
+
+      if (splash) {
+        splash.remove();
+      }
+
       document.getElementById("splash-branding")?.remove();
       document.body.style.background = "transparent";
     }
+
+    // Remove splash when Flutter renders its first frame.
+    window.addEventListener("flutter-first-frame", removeSplashFromWeb);
+
+    // Safety fallback: remove splash after 15 seconds.
+    window.addEventListener("load", function () {
+      setTimeout(function () {
+        removeSplashFromWeb();
+      }, 15000);
+    });
   </script>
 
   <!-- PDF.js for Syncfusion PDF Viewer -->
